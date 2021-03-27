@@ -18,21 +18,21 @@
 <div id="container">
     <h3>Add User</h3>
 
-    <form action="/SaveUserServlet" method="POST">
+    <form action="/user_tracker/SaveUserServlet" method="GET">
 
-        <input type="hidden" name="command" value="ADD" />
+<%--        <input type="hidden" name="command" value="ADD" />--%>
 
         <table>
             <tbody>
 
             <tr>
                 <td><label>nickname:</label></td>
-                <td><input type="text" name="nickName" /></td>
+                <td><input type="text" name="nick_name" /></td>
             </tr>
 
             <tr>
                 <td><label>Full Name:</label></td>
-                <td><input type="text" name="fullName" /></td>
+                <td><input type="text" name="full_name" /></td>
             </tr>
 
             <tr>
@@ -42,7 +42,8 @@
 
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" value="Save" class="save" /></td>
+<%--                <td><input type="submit" value="Save" class="save" /></td>--%>
+                <button type="submit" class="btn btn-success">Save</button>
             </tr>
 
             </tbody>
@@ -52,7 +53,7 @@
     <div style="clear: both;"></div>
 
     <p>
-        <a href="UserListServlet">Back to List</a>
+        <a href="/user_tracker/UserListServlet">Back to List</a>
     </p>
 </div>
 </body>

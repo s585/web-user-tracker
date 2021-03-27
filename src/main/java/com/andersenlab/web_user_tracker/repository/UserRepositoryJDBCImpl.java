@@ -113,7 +113,6 @@ public class UserRepositoryJDBCImpl implements UserRepository {
                 pstmt.setString(1, entity.getNickName());
                 pstmt.setString(2, entity.getFullName());
                 pstmt.setString(3, entity.getEmail());
-                pstmt.setBoolean(4, false);
 
                 try (final ResultSet rs = pstmt.executeQuery()) {
                     if (!rs.next()) {

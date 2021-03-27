@@ -30,17 +30,17 @@ public class SaveUserServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nickName = request.getParameter("nick_name");
         String fullName = request.getParameter("full_name");
         String email = request.getParameter("email");
 
         UserEntity user = new UserEntity(0L, nickName, fullName, email);
         repo.save(user);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/user-list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/UserListServlet");
         dispatcher.forward(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

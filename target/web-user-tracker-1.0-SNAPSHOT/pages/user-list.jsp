@@ -18,7 +18,7 @@
         </div>
         <br>
         <input type="button" value="Add User"
-               onclick="window.location.href='/pages/add-user.jsp'; return false;"
+               onclick="window.location.href='/user_tracker/pages/add-user.jsp'; return false;"
                class="add-user-button"
         />
         <br>

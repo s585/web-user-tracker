@@ -10,7 +10,7 @@ public class DBCPDataSource {
 
     static {
         ds.setDriverClassName("org.postgresql.Driver");
-        ds.setUrl("jdbc:postgresql://192.168.1.5:5432/user-tracker");
+        ds.setUrl("jdbc:postgresql://192.168.1.122:5432/user-tracker");
         ds.setUsername("postgres");
         ds.setPassword("s585");
         ds.setMinIdle(5);

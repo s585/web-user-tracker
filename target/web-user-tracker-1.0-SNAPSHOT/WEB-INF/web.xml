@@ -3,13 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <display-name>User-Tracker</display-name>
 
-<!--    <servlet>-->
-<!--        <servlet-name>saveUserServlet</servlet-name>-->
-<!--        <servlet-class>com.andersenlab.web_user_tracker.web.SaveUserServlet</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>saveUserServlet</servlet-name>-->
-<!--        <url-pattern>SaveUserServlet</url-pattern>-->
-<!--    </servlet-mapping>-->
+    <servlet>
+        <servlet-name>UserTrackerServlet</servlet-name>
+        <servlet-class>com.andersenlab.web_user_tracker.servlet.UserTrackerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserTrackerServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -1,5 +1,10 @@
 package com.andersenlab.web_user_tracker.servlet;
 
+import com.andersenlab.web_user_tracker.action.Action;
+import com.andersenlab.web_user_tracker.action.AddAction;
+import com.andersenlab.web_user_tracker.action.HomeAction;
+import com.andersenlab.web_user_tracker.action.RemoveAction;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +28,8 @@ public class UserTrackerServlet extends HttpServlet {
         actionMap.put(PAGE_HOME, new HomeAction());
         actionMap.put(PAGE_REMOVE, new RemoveAction());
     }
+
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String actionKey = "home";

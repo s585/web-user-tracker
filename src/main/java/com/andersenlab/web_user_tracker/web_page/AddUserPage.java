@@ -1,9 +1,9 @@
-package com.andersenlab.web_user_tracker.service;
+package com.andersenlab.web_user_tracker.web_page;
 
 import com.andersenlab.web_user_tracker.web_page.WebPage;
 
 public class AddUserPage implements WebPage {
-    public StringBuilder getFormAdding() {
+    public StringBuilder getAddForm() {
         StringBuilder responseTemplate = new StringBuilder();
         responseTemplate.append("<form action=\"\" method=\"post\">");
         responseTemplate.append(
@@ -20,7 +20,7 @@ public class AddUserPage implements WebPage {
         return responseTemplate;
     }
 
-    public StringBuilder getSuccessfulLabel() {
+    public StringBuilder getSuccessLabel() {
         return new StringBuilder().append("<h4>User is added</h>");
     }
 

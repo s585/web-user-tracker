@@ -2,11 +2,12 @@ package com.andersenlab.web_user_tracker.service;
 
 import com.andersenlab.web_user_tracker.entity.UserEntity;
 import com.andersenlab.web_user_tracker.factory.UserRepositoryJDBCImplFactory;
+import com.andersenlab.web_user_tracker.http.PageTitle;
 import com.andersenlab.web_user_tracker.repository.UserRepository;
+import com.andersenlab.web_user_tracker.web_page.AddUserPage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.registry.infomodel.User;
 import java.io.IOException;
 
 public class AddUserPageService implements PageService {
@@ -14,8 +15,7 @@ public class AddUserPageService implements PageService {
 
     @Override
     public void createPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final String pageTitle = "User Tracker";
-        StringBuilder responseTemplate = addUserPage.getHeader(pageTitle);
+        StringBuilder responseTemplate = addUserPage.getHeader(PageTitle.ADD_USER_PAGE);
         UserRepository repository = new UserRepositoryJDBCImplFactory().getRepository();
         if (request.getParameter("login") != null &&
                 request.getParameter("fullName") != null &&
@@ -27,9 +27,9 @@ public class AddUserPageService implements PageService {
                     request.getParameter("email")
             );
             repository.save(user);
-            responseTemplate.append(addUserPage.getSuccessfulLabel());
+            responseTemplate.append(addUserPage.getSuccessLabel());
         } else {
-            responseTemplate.append(addUserPage.getFormAdding());
+            responseTemplate.append(addUserPage.getAddForm());
         }
         responseTemplate.append(addUserPage.getFooterPage());
         response.getWriter().write(responseTemplate.toString());

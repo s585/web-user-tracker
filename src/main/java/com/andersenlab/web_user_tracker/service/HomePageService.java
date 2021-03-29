@@ -1,6 +1,7 @@
 package com.andersenlab.web_user_tracker.service;
 
 import com.andersenlab.web_user_tracker.factory.UserRepositoryJDBCImplFactory;
+import com.andersenlab.web_user_tracker.http.PageTitle;
 import com.andersenlab.web_user_tracker.repository.UserRepository;
 import com.andersenlab.web_user_tracker.web_page.HomePage;
 
@@ -13,8 +14,7 @@ public class HomePageService implements PageService {
 
     @Override
     public void createPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final String pageTitle = "User Tracker";
-        StringBuilder responseTemplate = homePage.getHeader(pageTitle);
+        StringBuilder responseTemplate = homePage.getHeader(PageTitle.HOME_PAGE);
         UserRepository repository = new UserRepositoryJDBCImplFactory().getRepository();
         responseTemplate.append(homePage.getTableUsers(repository.findAll()));
         response.getWriter().write(responseTemplate.toString());

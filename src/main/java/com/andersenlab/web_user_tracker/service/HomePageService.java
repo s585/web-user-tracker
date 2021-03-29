@@ -16,7 +16,12 @@ public class HomePageService implements PageService {
     public void createPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StringBuilder responseTemplate = homePage.getHeader(PageTitle.HOME_PAGE);
         UserRepository repository = new UserRepositoryJDBCImplFactory().getRepository();
-        responseTemplate.append(homePage.getTableUsers(repository.findAll()));
+        responseTemplate.append(homePage.getSortedForm());
+        if (request.getParameter("arg") != null) {
+            responseTemplate.append(homePage.getTableUsers(repository.findAllOrderedBy(request.getParameter("arg"))));
+        } else {
+            responseTemplate.append(homePage.getTableUsers(repository.findAll()));
+        }
         response.getWriter().write(responseTemplate.toString());
     }
 }

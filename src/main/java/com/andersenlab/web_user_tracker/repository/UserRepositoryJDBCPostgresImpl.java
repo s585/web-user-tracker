@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserRepositoryJDBCPostgresImpl implements UserRepository {
 
-    private final RowMapper<UserEntity> mapper = rs -> {
+    private RowMapper<UserEntity> mapper = rs -> {
         try {
             return new UserEntity(
                     rs.getLong("id"),
@@ -64,17 +64,20 @@ public class UserRepositoryJDBCPostgresImpl implements UserRepository {
         }
     }
 
+    @Override
     public List<UserEntity> findAllOrderedBy(String arg) {
-        final String query = "SELECT id, nick_name, full_name, email FROM users WHERE removed = false ORDER BY ?";
+        final String query = "SELECT * FROM users WHERE removed = false ORDER BY " + arg;
+        System.out.println(arg);
         try (
                 final Connection conn = DBCPDataSource.getConnection();
-                final PreparedStatement psmt = conn.prepareStatement(query)
+                final Statement psmt = conn.createStatement();
         ) {
             final List<UserEntity> result = new ArrayList<>();
-            psmt.setString(1, arg);
-            try (final ResultSet rs = psmt.executeQuery()) {
+//            psmt.setString(1, arg);
+            try (final ResultSet rs = psmt.executeQuery(query)) {
                 while (rs.next()) {
-                    final UserEntity entity = mapper.map(rs);
+                    UserEntity entity = mapper.map(rs);
+                    System.out.println(entity);
                     result.add(entity);
                 }
             }

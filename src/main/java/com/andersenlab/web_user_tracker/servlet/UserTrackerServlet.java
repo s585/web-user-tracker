@@ -29,7 +29,17 @@ public class UserTrackerServlet extends HttpServlet {
         actionMap.put(PAGE_REMOVE, new RemoveAction());
     }
 
+//    @Override
+//    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//        final String actionKey = request.getParameter(REQUEST_PARAMETER);
+//        actionMap.get(actionKey).execute(request, response);
+//    }
 
+    @Override
+    public void destroy() {
+        super.destroy();
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String actionKey = "home";
